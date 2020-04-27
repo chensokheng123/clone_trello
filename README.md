@@ -4,7 +4,7 @@ Part1:
 
 - [x] list component
 - [x] list title
-- [ ] card component
+- [x] card component
 - [ ] input component
 
 part2:
