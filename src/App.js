@@ -1,11 +1,9 @@
 import React from 'react';
-
-function App() {
+import List from './components/List/List';
+export default function App() {
   return (
     <div>
-      <h1>Hello world</h1>
+      <List />
     </div>
   );
 }
-
-export default App;
