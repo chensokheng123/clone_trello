@@ -2,7 +2,9 @@ import React from 'react';
 import { Paper, Typography, CssBaseline } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Title from './Title';
-import Card from './Card';
+import Card from '../Card';
+import InputContainer from '../Input/InputContainer';
+
 const useStyle = makeStyles((theme) => ({
   root: {
     width: '300px',
@@ -20,6 +22,7 @@ export default function List() {
         <Card />
         <Card />
         <Card />
+        <InputContainer />
       </Paper>
     </div>
   );
