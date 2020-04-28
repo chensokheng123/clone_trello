@@ -12,7 +12,7 @@ part2:
 - [x] initialize data
 - [x] add card to list
 - [x] add new list
-- [ ] update list title
+- [x] update list title
 
 part3:
 
