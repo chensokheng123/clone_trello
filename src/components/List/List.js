@@ -22,7 +22,7 @@ export default function List({ list }) {
         {list.cards.map((card) => (
           <Card key={card.id} card={card} />
         ))}
-        <InputContainer />
+        <InputContainer listId={list.id} />
       </Paper>
     </div>
   );

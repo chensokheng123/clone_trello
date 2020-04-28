@@ -14,7 +14,7 @@ export default function Card({ card }) {
 
   return (
     <div>
-      <Paper className={classes.card}>{card.content}</Paper>
+      <Paper className={classes.card}>{card.title}</Paper>
     </div>
   );
 }
