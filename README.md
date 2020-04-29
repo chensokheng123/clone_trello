@@ -16,7 +16,7 @@ part2:
 
 part3:
 
-- [ ] drag and drop card in the same list
+- [x] drag and drop card in the same list
 - [ ] drage and drop card in different list
 - [ ] drage and drop list
 
