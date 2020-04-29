@@ -6,19 +6,26 @@ import StoreApi from './utils/storeApi';
 import InputContainer from './components/Input/InputContainer';
 import { makeStyles } from '@material-ui/core/styles';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import TopBar from './components/TopBar';
+import SideMenu from './components/SideMenu';
 
 const useStyle = makeStyles((theme) => ({
   root: {
-    display: 'flex',
     minHeight: '100vh',
     background: 'green',
     width: '100%',
     overflowY: 'auto',
   },
+  listContainer: {
+    display: 'flex',
+  },
 }));
 
 export default function App() {
   const [data, setData] = useState(store);
+  const [open, setOpen] = useState(false);
+
+  const [backgroundUrl, setBackgroundUrl] = useState('');
   const classes = useStyle();
   const addMoreCard = (title, listId) => {
     console.log(title, listId);
@@ -119,26 +126,43 @@ export default function App() {
       setData(newState);
     }
   };
+
   return (
     <StoreApi.Provider value={{ addMoreCard, addMoreList, updateListTitle }}>
-      <DragDropContext onDragEnd={onDragEnd}>
-        <Droppable droppableId="app" type="list" direction="horizontal">
-          {(provided) => (
-            <div
-              className={classes.root}
-              ref={provided.innerRef}
-              {...provided.droppableProps}
-            >
-              {data.listIds.map((listId, index) => {
-                const list = data.lists[listId];
-                return <List list={list} key={listId} index={index} />;
-              })}
-              <InputContainer type="list" />
-              {provided.placeholder}
-            </div>
-          )}
-        </Droppable>
-      </DragDropContext>
+      <div
+        className={classes.root}
+        style={{
+          backgroundImage: `url(${backgroundUrl})`,
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
+        <TopBar setOpen={setOpen} />
+
+        <DragDropContext onDragEnd={onDragEnd}>
+          <Droppable droppableId="app" type="list" direction="horizontal">
+            {(provided) => (
+              <div
+                className={classes.listContainer}
+                ref={provided.innerRef}
+                {...provided.droppableProps}
+              >
+                {data.listIds.map((listId, index) => {
+                  const list = data.lists[listId];
+                  return <List list={list} key={listId} index={index} />;
+                })}
+                <InputContainer type="list" />
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
+        </DragDropContext>
+        <SideMenu
+          setBackgroundUrl={setBackgroundUrl}
+          open={open}
+          setOpen={setOpen}
+        />
+      </div>
     </StoreApi.Provider>
   );
 }
