@@ -22,8 +22,8 @@ part3:
 
 part4:
 
-- [ ] navigation bar
-- [ ] sidemenu
-- [ ] BoxMenu
-- [ ] BoxoptionsImages
-- [ ] BoxoptionColors
+- [x] navigation bar
+- [x] sidemenu
+- [x] BoxMenu
+- [x] BoxoptionsImages
+- [x] BoxoptionColors
